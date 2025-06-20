@@ -1,0 +1,30 @@
+{
+  "name": "plate-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite & node --watch server/index.ts",
+    "lint": "biome check"
+  },
+  "dependencies": {
+    "@hocuspocus/provider": "3.4.0",
+    "@hocuspocus/server": "3.4.0",
+    "@hocuspocus/transformer": "3.4.0",
+    "@platejs/yjs": "51.0.0",
+    "@slate-yjs/core": "1.0.2",
+    "platejs": "51.0.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "y-webrtc": " 10.3.0",
+    "yjs": "13.6.27"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "5.1.0",
+    "typescript": "5.9.3",
+    "vite": "7.1.12"
+  }
+}
