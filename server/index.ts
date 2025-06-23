@@ -3,9 +3,9 @@ import { slateNodesToInsertDelta } from '@slate-yjs/core';
 import { applyUpdateV2 } from 'yjs';
 import * as Y from 'yjs';
 
-const server = new Server({
+const server = Server.configure({
   port: 1234,
-  name: 'test',
+
   // biome-ignore lint/suspicious/useAwait: <explanation>
   async onLoadDocument() {
     const content = [

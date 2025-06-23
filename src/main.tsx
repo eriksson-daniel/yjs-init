@@ -1,41 +1,19 @@
-import { YjsPlugin } from '@platejs/yjs/react';
-import { ParagraphPlugin, Plate, PlateContent, usePlateEditor } from 'platejs/react';
-import { StrictMode, useEffect, useState } from 'react';
+import { YjsPlugin } from '@udecode/plate-yjs/react';
+import { ParagraphPlugin, Plate, PlateContent, createPlateEditor } from '@udecode/plate/react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-const useMounted = () => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  return mounted;
-};
-
 const App = () => {
-  const editor = usePlateEditor({
+  const editor = createPlateEditor({
     plugins: [
       ParagraphPlugin,
       YjsPlugin.configure({
         options: {
-          providers: [{ type: 'hocuspocus', options: { url: 'http://localhost:1234', name: 'test' } }],
+          hocuspocusProviderOptions: { url: 'ws://localhost:1234', name: 'test' },
         },
       }),
     ],
-    skipInitialization: true,
   });
-  const mounted = useMounted();
-
-  useEffect(() => {
-    if (!mounted) {
-      return;
-    }
-
-    editor.getApi(YjsPlugin).yjs.init();
-
-    return editor.getApi(YjsPlugin).yjs.destroy;
-  }, [editor, mounted]);
 
   return (
     <Plate editor={editor}>
